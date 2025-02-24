@@ -1,0 +1,64 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1740405030
+icon.svg::CompressedTexture2D::8848995065469535728::1740404658::1740404662::1::::<><>::
+::res://scene/::1740404970
+::res://script/::1740405000
+::res://texture/::1740405228
+crosshair161.png::CompressedTexture2D::9047327671561874864::1526194926::1740405241::1::::<><>::
+Tileset.png::CompressedTexture2D::3739048426745060876::1661401094::1740405241::1::::<><>::
+::res://texture/Ghoul/::1740405228
+Attack.png::CompressedTexture2D::5762731099730367558::1646265462::1740405241::1::::<><>::
+death.png::CompressedTexture2D::3974054097292921793::1646265494::1740405241::1::::<><>::
+Ghoul Sprite Sheet 62 x 33.png::CompressedTexture2D::5549593798297871922::1646265054::1740405241::1::::<><>::
+hit.png::CompressedTexture2D::8132357664437676320::1646265486::1740405241::1::::<><>::
+spawn.png::CompressedTexture2D::2586922211983073638::1646265508::1740405241::1::::<><>::
+static idle.png::CompressedTexture2D::4265126439395932662::1646265634::1740405241::1::::<><>::
+Wake.png::CompressedTexture2D::6739855049123006859::1646265442::1740405241::1::::<><>::
+Walk.png::CompressedTexture2D::2443626657283977596::1646265450::1740405241::1::::<><>::
+::res://texture/Guns/::1740405228
+gun1.png::CompressedTexture2D::1230690234895849996::1701134514::1740405241::1::::<><>::
+gun2.png::CompressedTexture2D::3143516014200951585::1701134514::1740405241::1::::<><>::
+gun3.png::CompressedTexture2D::7122959607180934704::1701134514::1740405241::1::::<><>::
+gun4.png::CompressedTexture2D::138021425630569422::1701134514::1740405241::1::::<><>::
+gun5.png::CompressedTexture2D::2420432210168410577::1701134514::1740405241::1::::<><>::
+gun6.png::CompressedTexture2D::4507377403099315731::1701134514::1740405241::1::::<><>::
+::res://texture/Spitter/::1740405228
+::res://texture/Spitter/Projectile/::1740405228
+burst 1.png::CompressedTexture2D::8046921192689383790::1646265834::1740405241::1::::<><>::
+burst 2.png::CompressedTexture2D::8446312682436552948::1646265844::1740405241::1::::<><>::
+projectile 16x16.png::CompressedTexture2D::6269408921981077135::1646265812::1740405241::1::::<><>::
+travel.png::CompressedTexture2D::493216084655919921::1646265826::1740405241::1::::<><>::
+::res://texture/Spitter/Spitter/::1740405228
+attack.png::CompressedTexture2D::8040492052124951642::1646265680::1740405241::1::::<><>::
+death.png::CompressedTexture2D::2019712542992399670::1646265696::1740405241::1::::<><>::
+hit.png::CompressedTexture2D::1571783931369926100::1646265688::1740405241::1::::<><>::
+idle.png::CompressedTexture2D::7358126337466136504::1646265660::1740405241::1::::<><>::
+Spitter Sprite Sheet 57 x 39.png::CompressedTexture2D::8799932720143051697::1646265598::1740405241::1::::<><>::
+walk.png::CompressedTexture2D::5016982068417437715::1646265670::1740405241::1::::<><>::
+::res://texture/Summoner/::1740405228
+death.png::CompressedTexture2D::1509223651027324176::1646266046::1740405241::1::::<><>::
+hit.png::CompressedTexture2D::8892846511940155696::1646266038::1740405241::1::::<><>::
+idle.png::CompressedTexture2D::1264766077437587671::1646266016::1740405241::1::::<><>::
+move.png::CompressedTexture2D::4800036421836818434::1646266022::1740405241::1::::<><>::
+summon.png::CompressedTexture2D::1286876041488876451::1646266028::1740405241::1::::<><>::
+Summoner 46x 44.png::CompressedTexture2D::8586054091675902385::1646266004::1740405241::1::::<><>::
+::res://texture/Without Sword (for gun)/::1740405228
+04 Stranded - Pack 4 back up-Death.png::CompressedTexture2D::2302118115883688524::1701133006::1740405241::1::::<><>::
+hero sprite not sword.png::CompressedTexture2D::6571006133944210111::1701133422::1740405241::1::::<><>::
+shadow.png::CompressedTexture2D::3622031480705019380::1739362002::1740405241::1::::<><>::
+::res://texture/Without Sword (for gun)/Down/::1740405228
+04 Stranded - Pack 4 back up-Idle Down.png::CompressedTexture2D::1786533946394720507::1701133006::1740405241::1::::<><>::
+04 Stranded - Pack 4 back up-Move Down.png::CompressedTexture2D::4784567819614297514::1701133006::1740405241::1::::<><>::
+04 Stranded - Pack 4 back up-Roll Down.png::CompressedTexture2D::4282885195204196175::1701133006::1740405241::1::::<><>::
+04 Stranded - Pack 4 back up-Run Down.png::CompressedTexture2D::2961319269598237718::1701133006::1740405241::1::::<><>::
+::res://texture/Without Sword (for gun)/left right/::1740405228
+R move.png::CompressedTexture2D::7170335861001314972::1701133006::1740405241::1::::<><>::
+R Roll.png::CompressedTexture2D::642458404725009732::1701133006::1740405241::1::::<><>::
+R Run.png::CompressedTexture2D::2022840768566772717::1701133006::1740405241::1::::<><>::
+R.png::CompressedTexture2D::1127604731748005844::1701133006::1740405241::1::::<><>::
+::res://texture/Without Sword (for gun)/Up/::1740405228
+04 Stranded - Pack 4 back up-Idle Up.png::CompressedTexture2D::8934688022272651893::1701133006::1740405241::1::::<><>::
+04 Stranded - Pack 4 back up-Move Up.png::CompressedTexture2D::3338108507431307513::1701133006::1740405241::1::::<><>::
+04 Stranded - Pack 4 back up-Roll Up.png::CompressedTexture2D::8952641997493869068::1701133006::1740405241::1::::<><>::
+04 Stranded - Pack 4 back up-Run UP.png::CompressedTexture2D::5818527824484008225::1701133006::1740405241::1::::<><>::
+::res://ui/::1740405030
