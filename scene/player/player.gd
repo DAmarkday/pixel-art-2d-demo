@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 
 const SPEED = 50.0 
-const JUMP_VELOCITY = -400.0
 
 @onready var anim = $Body/AnimatedSprite2D
 @onready var body = $Body
+@onready var weapon_node = $Body/WeaponNode
 
 var _current_anim = 'down_'
 
@@ -27,10 +27,18 @@ func changeAnim():
 	else:
 		_current_anim = get_movement_dir()
 		anim.play(_current_anim + 'move')
-		body.scale.x = -1 if velocity.x <0 else 1
+		
+	var _position = get_global_mouse_position()
+	weapon_node.look_at(_position)
+	
+	if _position.x>position.x and body.scale.x !=1:
+		body.scale.x = 1
+	elif _position.x <position.x && body.scale.x !=-1:
+		body.scale.x = -1
 		
 		
 func get_movement_dir() ->String:
+	weapon_node.z_index = 1
 	if velocity == Vector2.ZERO:
 		return 'lr_'
 	
@@ -40,5 +48,8 @@ func get_movement_dir() ->String:
 	if 45 <=degree and degree <135:
 		return 'down_'
 	elif -135 <=degree and degree <-45:
+		weapon_node.z_index = 0
 		return 'up_'
+
+	
 	return 'lr_'
