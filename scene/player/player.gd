@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 const SPEED = 50.0 
 
@@ -8,6 +8,9 @@ const SPEED = 50.0
 @onready var weapon_node = $Body/WeaponNode
 
 var _current_anim = 'down_'
+
+func _ready():
+	Game.player = self
 
 
 func _physics_process(delta: float) -> void:
