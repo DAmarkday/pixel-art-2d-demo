@@ -1,7 +1,35 @@
-[gd_scene load_steps=24 format=3 uid="uid://cm505wwjjbwu3"]
+[gd_scene load_steps=31 format=3 uid="uid://cm505wwjjbwu3"]
 
 [ext_resource type="PackedScene" uid="uid://gkr3rh46ayyp" path="res://scene/enemy/BaseEnemy.tscn" id="1_vkg0o"]
 [ext_resource type="Texture2D" uid="uid://clci8750mx755" path="res://texture/Ghoul/Ghoul Sprite Sheet 62 x 33.png" id="2_1lo2f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ergja"]
+atlas = ExtResource("2_1lo2f")
+region = Rect2(0, 66, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh6yx"]
+atlas = ExtResource("2_1lo2f")
+region = Rect2(62, 66, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j2xh"]
+atlas = ExtResource("2_1lo2f")
+region = Rect2(124, 66, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72p3g"]
+atlas = ExtResource("2_1lo2f")
+region = Rect2(186, 66, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdg8y"]
+atlas = ExtResource("2_1lo2f")
+region = Rect2(248, 66, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0hc7"]
+atlas = ExtResource("2_1lo2f")
+region = Rect2(310, 66, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6yx3"]
+atlas = ExtResource("2_1lo2f")
+region = Rect2(372, 66, 62, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6tk6"]
 atlas = ExtResource("2_1lo2f")
@@ -85,6 +113,32 @@ region = Rect2(496, 33, 62, 33)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d2cx1"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ergja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xh6yx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6j2xh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72p3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdg8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0hc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6yx3")
+}],
+"loop": false,
+"name": &"atk",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h6tk6")
@@ -171,3 +225,12 @@ position = Vector2(2, -16)
 sprite_frames = SubResource("SpriteFrames_d2cx1")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="AtkArea" parent="." index="3"]
+collision_layer = 0
+collision_mask = 2
+
+[connection signal="animation_finished" from="Body/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="Body/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="body_entered" from="AtkArea" to="." method="_on_atk_area_body_entered"]
+[connection signal="body_exited" from="AtkArea" to="." method="_on_atk_area_body_exited"]
