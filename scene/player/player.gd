@@ -11,9 +11,19 @@ var _current_anim = 'down_'
 
 func _ready():
 	Game.player = self
+	PlayerManager.on_player_death.connect(on_player_death)
+
+func on_player_death():
+	anim.play("death")
+	weapon_node.hide()
+	pass
 
 
 func _physics_process(delta: float) -> void:
+	if PlayerManager.isDeath():
+		return 
+	
+	
 	var dir = Vector2.ZERO
 	dir.x = Input.get_axis("move_left","move_right")
 	dir.y = Input.get_axis("move_up","move_down")
