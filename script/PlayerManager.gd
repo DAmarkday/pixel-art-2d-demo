@@ -12,8 +12,10 @@ func _ready():
 	
 	pass # Replace with function body.
 
-func isDeath()->bool:
-	return player_data.current_hp<=0
+func isDeath():
+	if player_data:
+		return player_data.current_hp <= 0
+	return false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
