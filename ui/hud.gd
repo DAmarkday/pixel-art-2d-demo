@@ -1,16 +1,41 @@
 extends Control
 
 
-@onready var hp_bar = $HpBar
-
-
+@onready var hp_bar = $HpControl/HpBar
+@onready var bullet_label= $WeaponControl/Bullet
+@onready var weapon_name_label = $WeaponControl/WeaponLabel
+@onready var weapon_texture = $WeaponControl/TextureRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	PlayerManager.on_player_hp_changed.connect(on_player_hp_changed)
+	
+	PlayerManager.on_bullet_count_changed.connect(on_bullet_count_changed)
+	PlayerManager.on_weapon_reload.connect(on_weapon_reload)
+	PlayerManager.on_weapon_changed.connect(on_weapon_changed)
+	
 	pass # Replace with function body.
 
+func on_weapon_changed(weapon:BaseWeapon):
+	weapon_name_label.text =weapon.weapon_name
+	weapon_texture.texture = weapon.sprite.texture
+	pass
+	
+
+
+func on_weapon_reload():
+	bullet_label.text = '换弹中'
+	pass
+	
+
+
+func on_bullet_count_changed(_curr,_max):
+	bullet_label.text = '%s / %s' %[_curr,_max]
+
+
 func on_player_hp_changed(_current,_max):
+	hp_bar.max_value = _max
+	hp_bar.value = _current
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

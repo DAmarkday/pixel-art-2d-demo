@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx80g16vioc1d"]
+
+[ext_resource type="PackedScene" uid="uid://dveoayfdwpdw1" path="res://scene/weapon/BaseWeapon.tscn" id="1_luuvy"]
+[ext_resource type="Texture2D" uid="uid://bk10iqntyeinh" path="res://texture/Guns/gun2.png" id="2_bdire"]
+
+[node name="BaseWeapon" instance=ExtResource("1_luuvy")]
+bullet_max = 60
+weapon_rof = 0.1
+weapon_name = "二号枪械"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_bdire")
