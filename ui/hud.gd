@@ -1,6 +1,5 @@
 extends Control
 
-
 @onready var hp_bar = $HpControl/HpBar
 @onready var bullet_label= $WeaponControl/Bullet
 @onready var weapon_name_label = $WeaponControl/WeaponLabel

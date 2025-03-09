@@ -3,6 +3,8 @@ extends Node
 var player:Player
 
 
+signal on_game_start()
+
 func damage(origin:Node2D,target:Node2D):
 	if origin is Player: 
 		if target is BaseEnemy:

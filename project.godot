@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pixel-art-2d-demo"
-run/main_scene="res://scene/Main.tscn"
+run/main_scene="res://ui/MainUI.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://csv5xu6osm6wb"]
+
+[ext_resource type="Script" path="res://ui/main_ui.gd" id="1_kprb1"]
+[ext_resource type="PackedScene" uid="uid://ckao338ex42pw" path="res://scene/Main.tscn" id="2_sxek2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n3hkx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gy58r"]
+bg_color = Color(0, 0.0313726, 0.0196078, 0.294118)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kprb1")
+
+[node name="Main" parent="." instance=ExtResource("2_sxek2")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 16.0
+offset_right = 160.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "辐射特工队"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -128.0
+offset_right = 147.0
+offset_bottom = -14.0
+grow_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="Start" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n3hkx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gy58r")
+text = "开始游戏"
+
+[node name="Exit" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n3hkx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gy58r")
+text = "退出游戏"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101961, 0.101961, 0.101961, 1)
+
+[connection signal="pressed" from="Control/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
