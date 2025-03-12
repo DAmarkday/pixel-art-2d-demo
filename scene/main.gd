@@ -10,6 +10,7 @@ func _ready():
 	pass # Replace with function body.
 
 func on_game_start():
+	LevelManager.new_level()
 	canvas_layer.show()
 		
 	var tween = create_tween()

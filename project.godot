@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 Game="*res://script/Game.gd"
 PlayerManager="*res://script/PlayerManager.gd"
+LevelManager="*res://script/LevelManager.gd"
+EnemyManager="*res://script/EnemyManager.gd"
 
 [display]
 

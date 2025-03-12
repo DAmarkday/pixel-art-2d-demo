@@ -4,6 +4,7 @@ extends Control
 @onready var bullet_label= $WeaponControl/Bullet
 @onready var weapon_name_label = $WeaponControl/WeaponLabel
 @onready var weapon_texture = $WeaponControl/TextureRect
+@onready var level_label = $Level
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,8 +13,14 @@ func _ready():
 	PlayerManager.on_bullet_count_changed.connect(on_bullet_count_changed)
 	PlayerManager.on_weapon_reload.connect(on_weapon_reload)
 	PlayerManager.on_weapon_changed.connect(on_weapon_changed)
+	LevelManager.on_level_changed.connect(on_level_changed)
+	
 	
 	pass # Replace with function body.
+
+func on_level_changed():
+	level_label.text = 'Level %s' %LevelManager.current_level
+	pass
 
 func on_weapon_changed(weapon:BaseWeapon):
 	weapon_name_label.text =weapon.weapon_name
