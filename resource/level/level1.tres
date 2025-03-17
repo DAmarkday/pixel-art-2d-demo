@@ -8,4 +8,4 @@ script = ExtResource("1_ymeqo")
 enemy = ExtResource("1_3brky")
 count = 50
 tick = 1.0
-once_count = 0
+once_count = 5

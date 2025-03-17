@@ -18,7 +18,7 @@ func _ready():
 	
 	pass # Replace with function body.
 
-func on_level_changed():
+func on_level_changed(level_data):
 	level_label.text = 'Level %s' %LevelManager.current_level
 	pass
 

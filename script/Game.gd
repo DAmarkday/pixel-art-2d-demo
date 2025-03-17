@@ -2,6 +2,7 @@ extends Node
 
 var player:Player
 
+var map:Node2D
 
 signal on_game_start()
 

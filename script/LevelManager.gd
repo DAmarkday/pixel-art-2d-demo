@@ -4,13 +4,14 @@ const level_path = "res://resource/level/"
 
 var current_level = 0
 
-signal on_level_changed()
+signal on_level_changed(level_data:LevelData)
+
 
 var level_data:Array[LevelData]
 
 func new_level():
 	current_level +=1
-	on_level_changed.emit()
+	on_level_changed.emit(level_data[current_level-1])
 	pass
 
 
