@@ -161,7 +161,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n5d4j")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 12.0
 }, {
@@ -223,8 +223,10 @@ position = Vector2(2, -12)
 [node name="AnimatedSprite2D" parent="Body" index="0"]
 position = Vector2(2, -16)
 sprite_frames = SubResource("SpriteFrames_d2cx1")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
+frame = 6
+frame_progress = 1.0
 
 [node name="AtkArea" parent="." index="3"]
 collision_layer = 0

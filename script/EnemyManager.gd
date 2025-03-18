@@ -7,6 +7,7 @@ var timer = Timer.new()
 
 
 var current_level_data:LevelData
+signal on_enemy_death() 
 
 func create_enemy(level_data:LevelData):
 	pass
@@ -28,6 +29,11 @@ func on_level_changed(level_data:LevelData):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func check_enemies():
+	if enemies.size() == 0:
+		LevelManager.new_level()
+
 	
 func time_out():
 	if current_level_data:

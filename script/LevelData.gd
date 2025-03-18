@@ -12,6 +12,7 @@ var current_count  = 0
 func create_enemy():
 	for i in once_count:
 		if current_count>=count:
+			LevelManager.stop()
 			return
 		var instance = enemy.instantiate()
 		#print(get_random_point())

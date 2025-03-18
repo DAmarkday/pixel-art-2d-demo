@@ -4,6 +4,9 @@ class_name BaseBullet
 @export var speed = 500
 @export var dir = Vector2.ZERO
 
+var current_weapon:BaseWeapon
+
+
 func _physics_process(delta):
 	global_position += dir *delta*  speed
 
@@ -16,3 +19,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_area_2d_body_entered(body):
+	if body is BaseEnemy:
+		Game.damage(Game.player,body)
+		queue_free()

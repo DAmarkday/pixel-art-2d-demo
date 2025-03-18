@@ -16,6 +16,11 @@ offset_bottom = 1.0
 color = Color(0.871327, 0.763317, 0.132367, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_o6m38")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

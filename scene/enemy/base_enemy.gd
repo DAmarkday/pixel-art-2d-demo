@@ -33,8 +33,16 @@ func _physics_process(delta):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	enemy_data = EnemyData.new()	
+	EnemyManager.enemies.append(self)
+	
+	enemy_data.on_death.connect(on_death)
 	pass # Replace with function body.
 
+func on_death():
+	current_state = State.DEATH
+	anim.play('death')
+	await anim.animation_finished
+	queue_free()
 
 func changeAnim():
 	if velocity == Vector2.ZERO:
@@ -51,7 +59,7 @@ func _process(delta):
 
 
 func _on_atk_area_body_entered(body):
-	if body is Player:
+	if body is Player and current_state != State.DEATH:
 		current_state = State.ATK
 		current_player = body
 		anim.play("atk")
@@ -80,3 +88,8 @@ func _on_animated_sprite_2d_animation_finished():
 		else:
 			current_state = State.IDLE
 	pass # Replace with function body.
+	
+func _exit_tree():
+	EnemyManager.enemies.erase(self)
+	EnemyManager.on_enemy_death.emit()
+	EnemyManager.check_enemies()

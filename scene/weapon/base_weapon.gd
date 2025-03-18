@@ -15,6 +15,8 @@ var current_rof_tick = 0
 
 var current_bullet_count = 0
 
+var player:Player
+
 func _ready():
 	current_bullet_count = bullet_max
 	PlayerManager.on_weapon_changed.emit(self)
@@ -24,6 +26,8 @@ func shoot():
 	var instance = _pre_bullet.instantiate()
 	instance.global_position = bullet_point.global_position
 	instance.dir = global_position.direction_to(get_global_mouse_position())
+	
+	instance.current_weapon = self
 	get_tree().root.add_child(instance)
 	
 	current_bullet_count -=1

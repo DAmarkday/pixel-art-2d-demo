@@ -7,6 +7,10 @@ class_name EnemyData
 var current_hp:
 	set(_value):
 		current_hp = _value
+		if current_hp <=0:
+			on_death.emit()
+
+signal on_death()
 
 func _init():
 	current_hp = max_hp
