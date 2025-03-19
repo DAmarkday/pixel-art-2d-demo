@@ -5,7 +5,8 @@ class_name BaseEnemy
 
 @onready var anim = $Body/AnimatedSprite2D
 @onready var body = $Body
-
+@onready var coll =$CollisionShape2D
+@onready var shadow = $Shadow 
 enum State {
 	IDLE,
 	MOVE,
@@ -35,11 +36,21 @@ func _ready():
 	enemy_data = EnemyData.new()	
 	EnemyManager.enemies.append(self)
 	
+	enemy_data.on_hit.connect(on_hit)
 	enemy_data.on_death.connect(on_death)
 	pass # Replace with function body.
 
+func on_hit(_damage):
+	Game.show_label(self,'-%s' %_damage)
+	pass
+
+
 func on_death():
+	if current_state == State.DEATH:
+		return
 	current_state = State.DEATH
+	coll.call_deferred("set_disabled",true)
+	shadow.hide()
 	anim.play('death')
 	await anim.animation_finished
 	queue_free()

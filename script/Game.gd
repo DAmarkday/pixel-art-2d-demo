@@ -1,5 +1,6 @@
 extends Node
 
+const _pre_hit_label = preload("res://ui/HitLabel.tscn")
 var player:Player
 
 var map:Node2D
@@ -16,6 +17,13 @@ func damage(origin:Node2D,target:Node2D):
 	
 	pass
 
+
+func show_label(origin:Node2D,text:String):
+	var instance = _pre_hit_label.instantiate()
+	instance.global_position = origin.global_position
+	map.add_child(instance)
+	instance.set_text(text)
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
