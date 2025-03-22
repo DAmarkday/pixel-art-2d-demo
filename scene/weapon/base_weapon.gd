@@ -30,7 +30,7 @@ func shoot():
 	instance.global_position = bullet_point.global_position
 	instance.dir = global_position.direction_to(get_global_mouse_position())
 	
-	instance.current_weapon = self
+	instance.current_weapon = self 
 	get_tree().root.add_child(instance)
 	
 	current_bullet_count -=1
@@ -47,7 +47,7 @@ func weapon_anim():
 	tween.tween_property(sprite,'scale:x',1,weapon_rof / 2)
 	if audio2d:
 		audio2d.play()
-	
+	Game.camera_offset(Vector2(-1,2),weapon_rof)
 	pass
 
 func reload():

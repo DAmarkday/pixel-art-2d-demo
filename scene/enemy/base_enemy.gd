@@ -7,11 +7,13 @@ class_name BaseEnemy
 @onready var body = $Body
 @onready var coll =$CollisionShape2D
 @onready var shadow = $Shadow 
+@onready var hit_audio = $AudioStreamPlayer2D
 enum State {
 	IDLE,
 	MOVE,
 	ATK,
-	DEATH
+	DEATH,
+	HIT
 }
 
 var current_state = State.IDLE
@@ -21,7 +23,7 @@ var enemy_data:EnemyData
 
 
 func _physics_process(delta):
-	if(current_state == State.DEATH||current_state == State.ATK):
+	if(current_state == State.DEATH||current_state == State.ATK ||current_state == State.HIT):
 		return
 	if PlayerManager.isDeath():
 		velocity = Vector2.ZERO
@@ -41,7 +43,14 @@ func _ready():
 	pass # Replace with function body.
 
 func on_hit(_damage):
+	current_state = State.HIT
+	
 	Game.show_label(self,'-%s' %_damage)
+	hit_audio.play()
+	
+	anim.play("hit")
+	await anim.animation_finished
+	current_state = State.IDLE
 	pass
 
 

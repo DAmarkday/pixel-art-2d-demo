@@ -33,3 +33,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func camera_offset(offset,time):
+	var tween = create_tween()
+	tween.tween_property(player.camera,'offset',Vector2.ZERO,time).from(offset)
+	pass
