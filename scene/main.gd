@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var canvas_layer=$CanvasLayer
-@onready var enemy_area = $Area2D
+@onready var map_land = $Land
 
 const _player = preload("res://scene/player/Player.tscn")
 

@@ -45,3 +45,12 @@ debug_color = Color(0.957017, 0.169424, 0.314272, 0.42)
 stream = ExtResource("3_qjw8x")
 volume_db = -8.0
 max_distance = 500.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+avoidance_enabled = true
+neighbor_distance = 200.0
+max_neighbors = 8
+max_speed = 0.01
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

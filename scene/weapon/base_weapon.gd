@@ -5,6 +5,7 @@ const _pre_bullet = preload("res://scene/bullet/BaseBullet.tscn")
 
 @onready var bullet_point = $BulletPoint
 @onready var audio2d = $AudioStreamPlayer2D
+@onready var audio_reload = $AudioStreamPlayer2D2
 
 @export var bullet_max = 30
 @export var damage = 5
@@ -12,6 +13,11 @@ const _pre_bullet = preload("res://scene/bullet/BaseBullet.tscn")
 @export var weapon_name = '默认枪械'
 @onready var fire_particles = $GPUParticles2D
 var current_rof_tick = 0
+
+const reload_audio = [
+	"res://audio/wpn_reload_start.mp3",
+	"res://audio/wpn_reload_end.mp3"
+]
 
 @onready var sprite = $Sprite2D
 
@@ -51,8 +57,15 @@ func weapon_anim():
 	pass
 
 func reload():
+	audio_reload.stream = load(reload_audio[0])
+	audio_reload.play()
 	PlayerManager.on_weapon_reload.emit()
-	await get_tree().create_timer(2).timeout 
+	await get_tree().create_timer(2 - 0.42).timeout
+	audio_reload.stream = load(reload_audio[1])
+	audio_reload.play()
+	
+	await get_tree().create_timer(0.42).timeout 
+	 
 	current_bullet_count = bullet_max 
 	PlayerManager.on_bullet_count_changed.emit(current_bullet_count,bullet_max)
 	pass

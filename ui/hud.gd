@@ -5,6 +5,7 @@ extends Control
 @onready var weapon_name_label = $WeaponControl/WeaponLabel
 @onready var weapon_texture = $WeaponControl/TextureRect
 @onready var level_label = $Level
+@onready var cross = $TextureRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,6 +15,10 @@ func _ready():
 	PlayerManager.on_weapon_reload.connect(on_weapon_reload)
 	PlayerManager.on_weapon_changed.connect(on_weapon_changed)
 	LevelManager.on_level_changed.connect(on_level_changed)
+	
+	Game.on_game_start.connect(func ():
+		Input.mouse_mode =Input.MOUSE_MODE_HIDDEN
+		)
 	
 	
 	pass # Replace with function body.
@@ -30,6 +35,7 @@ func on_weapon_changed(weapon:BaseWeapon):
 
 
 func on_weapon_reload():
+	Game.show_label(Game.player,"正在换弹中")
 	bullet_label.text = '换弹中'
 	pass
 	
@@ -46,4 +52,5 @@ func on_player_hp_changed(_current,_max):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	cross.position = get_global_mouse_position() - cross.size /2
 	pass
