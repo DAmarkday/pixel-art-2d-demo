@@ -37,5 +37,5 @@ func _input(event):
 func _process(delta):
 	pass
 	
-signal on_bullet_count_changed(_curr,_max)
+signal on_bullet_count_changed(_curr_bullets_per_magazine,_bullets_per_magazine,current_magazine_counts)
 signal on_weapon_reload()

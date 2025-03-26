@@ -41,8 +41,8 @@ func on_weapon_reload():
 	
 
 
-func on_bullet_count_changed(_curr,_max):
-	bullet_label.text = '%s / %s' %[_curr,_max]
+func on_bullet_count_changed(_curr_bullets_per_m,_bullets_per_magazine,_current_magazine_counts):
+	bullet_label.text = '%s / %s / %s' %[_curr_bullets_per_m,_bullets_per_magazine,_current_magazine_counts]
 
 
 func on_player_hp_changed(_current,_max):

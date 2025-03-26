@@ -7,7 +7,10 @@ const _pre_bullet = preload("res://scene/bullet/BaseBullet.tscn")
 @onready var audio2d = $AudioStreamPlayer2D
 @onready var audio_reload = $AudioStreamPlayer2D2
 
-@export var bullet_max = 30
+@export var bullets_per_magazine = 30  # 每弹夹子弹数
+@export var max_magazine_counts = 5 # 最大弹夹数量
+@export var cur_total_bullets_counts = 150  # 当前子弹数量
+
 @export var damage = 5
 @export var weapon_rof = 0.2
 @export var weapon_name = '默认枪械'
@@ -21,15 +24,27 @@ const reload_audio = [
 
 @onready var sprite = $Sprite2D
 
-var current_bullet_count = 0 
+var current_bullet_count_in_single_magazine = 0 # 在当前弹夹中所有的子弹数量
+var current_magazine_counts = 0 # 当前的弹夹数量
 
 var player:Player
 
 func _ready():
 	fire_particles.lifetime = weapon_rof - 0.01
-	current_bullet_count = bullet_max
+	
+	# 设置当前所拥有的弹夹数量
+	current_magazine_counts = cur_total_bullets_counts / bullets_per_magazine
+	
+	# 设置当前弹夹的子弹量
+	var temp = cur_total_bullets_counts % bullets_per_magazine
+	if temp ==0:
+		current_magazine_counts -= 1
+		current_bullet_count_in_single_magazine = bullets_per_magazine
+	else:
+		current_bullet_count_in_single_magazine = temp
+	
 	PlayerManager.on_weapon_changed.emit(self)
-	PlayerManager.on_bullet_count_changed.emit(current_bullet_count,bullet_max)
+	PlayerManager.on_bullet_count_changed.emit(current_bullet_count_in_single_magazine,bullets_per_magazine,current_magazine_counts)
 
 func shoot():
 	var instance = _pre_bullet.instantiate()
@@ -39,9 +54,9 @@ func shoot():
 	instance.current_weapon = self 
 	get_tree().root.add_child(instance)
 	
-	current_bullet_count -=1
-	PlayerManager.on_bullet_count_changed.emit(current_bullet_count,bullet_max)
-	if current_bullet_count <=0:
+	current_bullet_count_in_single_magazine -=1
+	PlayerManager.on_bullet_count_changed.emit(current_bullet_count_in_single_magazine,bullets_per_magazine,current_magazine_counts)
+	if current_bullet_count_in_single_magazine <=0 && current_magazine_counts >0:
 		reload()
 	weapon_anim()
 
@@ -66,15 +81,16 @@ func reload():
 	
 	await get_tree().create_timer(0.42).timeout 
 	 
-	current_bullet_count = bullet_max 
-	PlayerManager.on_bullet_count_changed.emit(current_bullet_count,bullet_max)
+	current_bullet_count_in_single_magazine = bullets_per_magazine 
+	current_magazine_counts -=1
+	PlayerManager.on_bullet_count_changed.emit(current_bullet_count_in_single_magazine,bullets_per_magazine,current_magazine_counts)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# 更新节流计时器
 	current_rof_tick +=delta
-	if Input.is_action_pressed("fire") and current_rof_tick >= weapon_rof && current_bullet_count > 0:
+	if Input.is_action_pressed("fire") and current_rof_tick >= weapon_rof && current_bullet_count_in_single_magazine > 0:
 			# 计时器归零时执行操作并重置计时器
 		shoot()	
 		current_rof_tick=0
