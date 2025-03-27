@@ -56,8 +56,8 @@ func shoot():
 	
 	current_bullet_count_in_single_magazine -=1
 	PlayerManager.on_bullet_count_changed.emit(current_bullet_count_in_single_magazine,bullets_per_magazine,current_magazine_counts)
-	if current_bullet_count_in_single_magazine <=0 && current_magazine_counts >0:
-		reload()
+	#if current_bullet_count_in_single_magazine <=0 && current_magazine_counts >0:
+		#reload()
 	weapon_anim()
 
 func weapon_anim():
@@ -94,4 +94,8 @@ func _process(delta):
 			# 计时器归零时执行操作并重置计时器
 		shoot()	
 		current_rof_tick=0
+		
+	if Input.is_action_just_pressed("reload_weapon"):
+		if  current_magazine_counts >0&& current_bullet_count_in_single_magazine<bullets_per_magazine:
+			reload()
 	pass
