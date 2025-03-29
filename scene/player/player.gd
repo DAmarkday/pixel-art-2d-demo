@@ -2,7 +2,10 @@ extends CharacterBody2D
 class_name Player
 
 const SPEED = 50.0 
-
+# 同步加载
+const _pre_weapon = preload("res://scene/weapon/Gun2.tscn")
+const _default_weapon = preload("res://scene/weapon/BaseWeapon.tscn")
+const arr = [_default_weapon,_pre_weapon]
 @onready var anim = $Body/AnimatedSprite2D
 @onready var body = $Body
 @onready var weapon_node = $Body/WeaponNode
@@ -10,9 +13,35 @@ const SPEED = 50.0
 
 var _current_anim = 'down_'
 
+func on_init_player_weapon():
+	if not is_instance_valid(weapon_node):
+		push_error("weapon_node 未初始化或已被释放！")
+		return
+	for weapon in arr:
+		print(weapon)
+		if not weapon is PackedScene:
+			push_error("无效的武器场景资源: ", weapon)
+			continue
+		var scene = weapon.instantiate()
+		if not scene:
+			push_error("场景实例化失败: ", weapon.resource_path)
+			continue
+		weapon_node.add_child(scene)
+		print("武器已加载:", scene.weapon_name)
+		
+	await get_tree().process_frame
+	PlayerManager.on_default_set_player_weapon.emit(0)
+	
+
 func _ready():
 	Game.player = self
 	PlayerManager.on_player_death.connect(on_player_death)
+	
+	on_init_player_weapon()
+	
+	PlayerManager.connect('on_weapon_change_instance',func (index):
+		changeWeapon(index)
+		)
 
 func on_player_death():
 	anim.play("death")
@@ -67,3 +96,21 @@ func get_movement_dir() ->String:
 
 	
 	return 'lr_'
+	
+func changeWeapon(weaponIndex:int):
+	for index in range(arr.size()):
+		var current_weapon = Game.player.weapon_node.get_child(index)
+		if index == weaponIndex:
+			if current_weapon:
+				current_weapon.visible = true
+				current_weapon.process_mode = Node.PROCESS_MODE_INHERIT
+				PlayerManager.on_weapon_changed.emit(current_weapon)
+				
+				PlayerManager.on_bullet_count_changed.emit(current_weapon.current_bullet_count_in_single_magazine,current_weapon.bullets_per_magazine,current_weapon.current_magazine_counts)
+			#pass
+		else:
+			#pass
+			if current_weapon:
+				current_weapon.visible = false
+				current_weapon.process_mode = Node.PROCESS_MODE_DISABLED
+	pass
