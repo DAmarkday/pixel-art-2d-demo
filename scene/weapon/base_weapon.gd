@@ -10,6 +10,7 @@ const _pre_bullet = preload("res://scene/bullet/BaseBullet.tscn")
 @export var bullets_per_magazine = 30  # 每弹夹子弹数
 @export var max_magazine_counts = 5 # 最大弹夹数量
 @export var cur_total_bullets_counts = 150  # 当前子弹数量
+@export var weapon_reload_rof= 0.42 # 武器换弹速度,数值越大换弹速度越慢
 
 @export var damage = 5
 @export var weapon_rof = 0.2
@@ -75,11 +76,11 @@ func reload():
 	audio_reload.stream = load(reload_audio[0])
 	audio_reload.play()
 	PlayerManager.on_weapon_reload.emit()
-	await get_tree().create_timer(2 - 0.42).timeout
+	await get_tree().create_timer(2 - weapon_reload_rof).timeout
 	audio_reload.stream = load(reload_audio[1])
 	audio_reload.play()
 	
-	await get_tree().create_timer(0.42).timeout 
+	await get_tree().create_timer(weapon_reload_rof).timeout 
 	 
 	current_bullet_count_in_single_magazine = bullets_per_magazine 
 	current_magazine_counts -=1
