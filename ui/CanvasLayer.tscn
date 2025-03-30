@@ -33,6 +33,32 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kby3r")
 
+[node name="EnemyInfoInLevel" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -185.0
+offset_top = 8.0
+offset_right = -13.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "当前波次敌人总数"
+vertical_alignment = 1
+
+[node name="LevelInfo" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.5
+offset_top = 4.0
+offset_right = 67.5
+offset_bottom = 28.0
+grow_horizontal = 2
+text = "波次"
+vertical_alignment = 1
+
 [node name="HpControl" type="Control" parent="HUD"]
 anchors_preset = 0
 offset_right = 208.0
@@ -123,18 +149,17 @@ text = "30/30"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Level" type="Label" parent="HUD"]
+[node name="KillInfo" type="Label" parent="HUD"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -38.0
-offset_top = 5.0
-offset_right = 38.0
-offset_bottom = 28.0
-grow_horizontal = 2
-text = "Level 1"
-horizontal_alignment = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -186.0
+offset_top = 66.0
+offset_right = -11.0
+offset_bottom = 89.0
+grow_horizontal = 0
+text = "击杀数"
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HUD"]
@@ -147,3 +172,16 @@ pivot_offset = Vector2(16, 16)
 texture = ExtResource("4_tj8lh")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="EnemyAliveInfo" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -185.0
+offset_top = 36.0
+offset_right = -8.0
+offset_bottom = 59.0
+grow_horizontal = 0
+text = "敌人剩余数"
+vertical_alignment = 1

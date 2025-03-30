@@ -13,7 +13,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 anti_aliasing = false
 
-[node name="Main" type="Control"]
+[node name="Main2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,7 +43,7 @@ offset_right = 160.0
 offset_bottom = 60.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
-text = "辐射特工队"
+text = "工程测试"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -54,6 +54,8 @@ func _ready():
 	
 	enemy_data.on_hit.connect(on_hit)
 	enemy_data.on_death.connect(on_death)
+	
+	EnemyManager.handleEnemyCounts.emit(1)
 	pass # Replace with function body.
 
 func on_hit(_damage):
@@ -76,6 +78,8 @@ func on_death():
 	shadow.hide()
 	anim.play('death')
 	await anim.animation_finished
+	
+	EnemyManager.handleEnemyCounts.emit(-1)
 	queue_free()
 
 func changeAnim():

@@ -4,8 +4,14 @@ extends Control
 @onready var bullet_label= $WeaponControl/Bullet
 @onready var weapon_name_label = $WeaponControl/WeaponLabel
 @onready var weapon_texture = $WeaponControl/TextureRect
-@onready var level_label = $Level
 @onready var cross = $TextureRect
+
+@onready var levelInfo_label = $LevelInfo
+@onready var killInfo_label = $KillInfo
+@onready var enemyAliveInfolabel = $EnemyAliveInfo
+@onready var enemyInfoInLevel_label = $EnemyInfoInLevel
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,12 +25,17 @@ func _ready():
 	Game.on_game_start.connect(func ():
 		Input.mouse_mode =Input.MOUSE_MODE_HIDDEN
 		)
-	
-	
-	pass # Replace with function body.
+		
+	EnemyManager.setFightInfoLabel.connect(func (stillAliveEnemyCounts:int,killCounts:int):
+		enemyAliveInfolabel.text = '敌人剩余数: %s' %stillAliveEnemyCounts
+		killInfo_label.text = '击杀数: %s' %killCounts
+	)
 
-func on_level_changed(level_data):
-	level_label.text = 'Level %s' %LevelManager.current_level
+
+func on_level_changed(level:int,enemy_counts_in_current_level:int,tick:float):
+	levelInfo_label.text = '波次: %s' %LevelManager.current_level
+	#enemyInfo_label.text = '敌人存活数量: %s' %LevelManager.still_alive_counts
+	enemyInfoInLevel_label.text = '当前波次敌人总数: %s' %enemy_counts_in_current_level
 	pass
 
 func on_weapon_changed(weapon:BaseWeapon):
