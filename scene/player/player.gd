@@ -30,7 +30,7 @@ func on_init_player_weapon():
 		print("武器已加载:", scene.weapon_name)
 		
 	await get_tree().process_frame
-	PlayerManager.on_default_set_player_weapon.emit(0)
+	PlayerManager.on_default_set_player_weapon.emit(0,weapon_node.get_child(0))
 	
 
 func _ready():

@@ -10,7 +10,7 @@ signal on_game_start()
 func damage(origin:Node2D,target:Node2D):
 	if origin is Player: 
 		if target is BaseEnemy:
-			target.enemy_data.current_hp -=PlayerManager.player_data.damage
+			target.enemy_data.current_hp -=PlayerManager.player_cur_use_weapon.damage
 	if origin is BaseEnemy: 
 		if target is Player:
 			PlayerManager.player_data.current_hp -=origin.enemy_data.damage
