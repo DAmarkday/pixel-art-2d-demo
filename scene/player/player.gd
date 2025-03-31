@@ -42,6 +42,7 @@ func _ready():
 	PlayerManager.connect('on_weapon_change_instance',func (index):
 		changeWeapon(index)
 		)
+		
 
 func on_player_death():
 	anim.play("death")
