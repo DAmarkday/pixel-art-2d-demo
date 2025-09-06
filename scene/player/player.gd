@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-const SPEED = 50.0 
+const SPEED = 150.0 
 # 同步加载
 const _pre_weapon = preload("res://scene/weapon/Gun2.tscn")
 const _default_weapon = preload("res://scene/weapon/BaseWeapon.tscn")
